@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Controle } from "./components/Controle";
+import { Tela } from "./components/Tela";
+import { CanalProvider, useCanal } from "./context/Canal";
 
 function App() {
+  const { canal } = useCanal()
+
+  const canaisLista = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  console.log(canal);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CanalProvider>
+      <Tela />
+      <Controle listaCanais={canaisLista}/>
+    </CanalProvider>
   );
 }
 
